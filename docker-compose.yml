@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "aspect"
+      POSTGRES_USER: "aspec_tuser"
+      POSTGRES_PASSWORD: "pgpwd4aspect"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - .:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - postgres
+    
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4:5.7
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "aspect_user@aspect.com"
+      PGADMIN_DEFAULT_PASSWORD: "pgadminpwd4aspect"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:8080"
+    restart: unless-stopped
+    networks:
+      - postgres
