@@ -30,3 +30,7 @@ services:
     restart: unless-stopped
     networks:
       - postgres
+      
+networks:
+  postgres:
+    driver: bridge
