@@ -1,0 +1,9 @@
+.dz {
+    border-radius: 10px;
+    border-color: #ccc;
+    border: dashed !important
+}
+
+.dz:hover {
+    background-color: aliceblue;
+}

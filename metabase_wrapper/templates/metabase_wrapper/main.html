@@ -1,0 +1,24 @@
+{% extends "metabase_wrapper/base.html" %}
+
+{% block head %}
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+{% endblock head%}
+
+{% block title %}
+    Загрузить файлы
+{% endblock title %}
+
+{% block content %}
+    <form action="/bi/upload/"
+        method="POST"
+        class="dropzone dz"
+        id="my-awesome-dropzone">
+        {% csrf_token %}
+    </form>
+    
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end my-3">
+        <a class="btn btn-outline-primary" href="{% url 'admin:index' %}metabase_wrapper/sofile/" role="button">В админку</a>
+    </div>
+    
+{% endblock content %}

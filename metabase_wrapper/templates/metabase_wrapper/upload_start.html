@@ -1,0 +1,37 @@
+{% extends "metabase_wrapper/base.html" %}
+
+{% block title %}
+    Начало обработки
+{% endblock title %}
+
+{% block content %}
+<div class="alert alert-info" role="alert">
+    проверь правильность привязки файла к дистрибьютору и период загрузки
+</div>
+
+<table class="table table-hover table-bordered">
+    <thead>
+      <tr class="table-secondary">
+        <th scope="col">Файл</th>
+        <th scope="col">Дистрибьютор</th>
+        <th scope="col">Год</th>
+        <th scope="col">Месяц</th>
+        <th scope="col">Месяц в файле</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for obj in object_list %}
+      <tr>
+        <td>{{ obj.filename }}</td>
+        <td>{{ obj.distributor }}</td>
+        <td>{{ obj.year }}</td>
+        <td>{{ obj.month }}</td>
+        <td>
+            {% if obj.is_month_inside %} ✅ {% else %} ❌ {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+    
+{% endblock content %}

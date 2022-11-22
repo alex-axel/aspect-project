@@ -30,6 +30,15 @@ services:
     restart: unless-stopped
     networks:
       - postgres
+  
+  redis:
+    container_name: redis_container
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - postgres
       
 networks:
   postgres:
